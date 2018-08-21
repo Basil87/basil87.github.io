@@ -1,0 +1,235 @@
+@font-face {
+  font-family: "Exo-2";
+  src: url("../fonts/Exo2.0-Thin.woff") format("woff"),
+    url("../fonts/Exo2.0-Thin.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: "Open Sans", "Arial", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #ffffff;
+  background: #000000 url(../img/prototype1.jpg) repeat;
+  background-color: #000000;
+  overflow: hidden;
+}
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 1280px;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.header__title {
+  margin-bottom: 20px; 
+  font-family: 'Exo-2', Arial, Helvetica, sans-serif;
+  font-size: 36px;
+  font-weight: 200;
+}
+
+.products-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 0 80px;
+}
+
+.feed-card {
+  position: relative;
+  display: block;
+  width: 320px;
+  height: 480px;
+  margin-bottom: 16px; 
+  padding-top: 18px;
+  padding-left: 44px;
+  padding-right: 40px; 
+  background: #ffffff url(../img/cat.png) no-repeat;
+  background-position: -28px 202px;
+  border: 4px solid #1698d9;
+  border-radius: 10px;
+  -webkit-clip-path: polygon(0 42px, 42px 0, 100% 0, 100% 100%, 0% 100%);
+          clip-path: polygon(0 42px, 42px 0, 100% 0, 100% 100%, 0% 100%);
+  text-decoration: none;
+}
+
+.feed-card:before {
+  content: '';
+  display: block;
+  width: 4px;
+  height: 60px;
+  background-color: #1698d9;
+  position: absolute;
+  top: -10px;
+  left: 14px;
+  transform: rotate(45deg);
+}
+
+.feed-card:hover {
+  border-color: #2ea8e6;
+}
+
+.feed-card:hover:before,
+.feed-card:hover .feed-card__amount {
+  background-color: #2ea8e6;
+}
+
+.feed-card.feed-card_selected {
+  border-color: #d91667;
+}
+
+.feed-card.feed-card_selected:hover {
+  border-color: #d91667;
+}
+.feed-card.feed-card_selected:before,
+.feed-card.feed-card_selected:hover:before,
+.feed-card.feed-card_selected .feed-card__amount {
+  background-color: #d91667;
+}
+
+.feed-card.feed-card_selected.feed-card_selected_hover {
+  border-color: #e62e7a;
+}
+
+.feed-card.feed-card_selected.feed-card_selected_hover:before,
+.feed-card.feed-card_selected.feed-card_selected_hover .feed-card__amount {
+  background-color: #e62e7a;
+}
+
+.feed-card.feed-card_disabled {
+  border-color: #b3b3b3;
+  cursor: auto;
+}
+
+.feed-card.feed-card_disabled:hover {
+  border-color: #b3b3b3;
+}
+.feed-card.feed-card_disabled:before,
+.feed-card.feed-card_disabled:hover:before,
+.feed-card.feed-card_disabled .feed-card__amount {
+  background-color: #b3b3b3;
+}
+
+.feed-card__marker {
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  color: #666666;
+  font-size: 16px;
+}
+
+.feed-card__marker_selected_hover {
+  color: #e62e7a;
+}
+
+.feed-card__title {
+  margin-bottom: 11px;
+  margin-top: 5px;
+}
+
+.feed-card__brand-mame {
+  display: block; 
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  color: #000000;
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.feed-card__food-taste {
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  color: #000000;
+  font-size: 24px;
+  font-weight: bold;
+} 
+
+.feed-card__description {
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  color: #666666;
+  font-size: 16px;
+  line-height: 1.1;
+  letter-spacing: -1px;
+}
+
+.feed-card__description span {
+  display: block;
+}
+
+.feed-card__amount {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  background-color: #1698d9;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 10px;
+  right: 12px;
+  line-height: 1;
+}
+
+.feed-card__amount-number {
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  color: #ffffff;
+  font-size: 42px;
+  letter-spacing: -1px;
+}
+
+.feed-card__amount-units {
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  color: #ffffff;
+  font-size: 21px;
+}
+
+.products-item__slogan {
+  text-align: center;
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  color: #ffffff;
+  font-size: 13px;
+}
+
+.products-item__slogan.products-item__slogan_disabled {
+  color: #ffff66;
+}
+
+.products-item__slogan-link {
+  color: #1698d9;
+}
+
+.products-item__slogan-link:hover {
+  color:  #2ea8e6;
+}
+
+
+.disable-block {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  opacity: 0.6;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  z-index: 100;
+  -webkit-clip-path: polygon(0 42px, 42px 0, 100% 0, 100% 100%, 0% 100%);
+          clip-path: polygon(0 42px, 42px 0, 100% 0, 100% 100%, 0% 100%);
+}
