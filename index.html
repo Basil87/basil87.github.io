@@ -9,53 +9,60 @@
 </head>
 <body>
   <div class="wrap">
-    <header class="header">
-      <h1 class="header__title">Ты сегодня покормил кота?</h1>
-    </header>
-    <main class="products-list">
-      <section class="products-item">
-        <a href="#" class="feed-card">
-          <span class="feed-card__marker">Сказочное заморское яство</span>
-          <h2 class="feed-card__title">
-            <span class="feed-card__brand-mame">Нямушка</span>
-            <span class="feed-card__food-taste">с фуа-гра</span>
-          </h2>
-          <div class="feed-card__description">
-            <span>10 порций</span>
-            <span>мышь в подарок</span>
-          </div>
-          <div class="feed-card__amount">
-            <span class="feed-card__amount-number">0,5</span>
-            <span class="feed-card__amount-units">кг</span>
-          </div>
-        </a>
-        <div class="products-item__slogan">
-          <span class="products-item__slogan-text">Чего сидишь? Порадуй котэ, </span>
-          <a href="#" class="products-item__slogan-link">купи.</a>
-        </div>
-      </section>
-      <section class="products-item">
+    <div class="container">
+      <header class="header">
+        <h1 class="header__title">Ты сегодня покормил кота?</h1>
+      </header>
+      <main class="products-list">
+        <section class="products-item">
           <a href="#" class="feed-card">
             <span class="feed-card__marker">Сказочное заморское яство</span>
             <h2 class="feed-card__title">
               <span class="feed-card__brand-mame">Нямушка</span>
-              <span class="feed-card__food-taste">с рыбой</span>
+              <span class="feed-card__food-taste">с фуа-гра</span>
             </h2>
             <div class="feed-card__description">
-              <span>40 порций</span>
-              <span>2 мыши в подарок</span>
+              <span>10 порций</span>
+              <span>мышь в подарок</span>
             </div>
             <div class="feed-card__amount">
-              <span class="feed-card__amount-number">2</span>
+              <span class="feed-card__amount-number">0,5</span>
               <span class="feed-card__amount-units">кг</span>
             </div>
           </a>
-          <div class="products-item__slogan">
+          <div class="products-item__slogan products-item__slogan_unselected">
             <span class="products-item__slogan-text">Чего сидишь? Порадуй котэ, </span>
             <a href="#" class="products-item__slogan-link">купи.</a>
           </div>
+          <div class="products-item__slogan products-item__slogan_selected" style="display: none">
+            Печень утки разварная с артишоками.
+          </div>
         </section>
         <section class="products-item">
+            <a href="#" class="feed-card">
+              <span class="feed-card__marker">Сказочное заморское яство</span>
+              <h2 class="feed-card__title">
+                <span class="feed-card__brand-mame">Нямушка</span>
+                <span class="feed-card__food-taste">с рыбой</span>
+              </h2>
+              <div class="feed-card__description">
+                <span>40 порций</span>
+                <span>2 мыши в подарок</span>
+              </div>
+              <div class="feed-card__amount">
+                <span class="feed-card__amount-number">2</span>
+                <span class="feed-card__amount-units">кг</span>
+              </div>
+            </a>
+            <div class="products-item__slogan products-item__slogan_unselected">
+              <span class="products-item__slogan-text">Чего сидишь? Порадуй котэ, </span>
+              <a href="#" class="products-item__slogan-link">купи.</a>
+            </div>
+            <div class="products-item__slogan products-item__slogan_selected" style="display: none">
+              Головы щучьи с чесноком да свежайшая сёмгушка.
+            </div>
+          </section>
+          <section class="products-item">
             <a href="#" class="feed-card feed-card_disabled">
               <span class="feed-card__marker">Сказочное заморское яство</span>
               <h2 class="feed-card__title">
@@ -72,12 +79,16 @@
                 <span class="feed-card__amount-units">кг</span>
               </div>
             </a>
-            <div class="products-item__slogan">
+            <div class="products-item__slogan products-item__slogan_unselected">
               <span class="products-item__slogan-text">Чего сидишь? Порадуй котэ, </span>
               <a href="#" class="products-item__slogan-link">купи.</a>
             </div>
+            <div class="products-item__slogan products-item__slogan_selected" style="display: none">
+              Филе из цыплят с трюфелями в бульоне.
+            </div>
           </section>
-    </main>
+      </main>
+    </div>
   </div>
   <script src="js/main.js"></script> 
 </body>

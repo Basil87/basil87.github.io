@@ -3,10 +3,25 @@
 (function () {
   var MAIN_MARKER = 'Сказочное заморское яство';
   var QUESTION_MARKER = 'Котэ не одобряет?';
-  var MAIN_SLOGAN = '<span class="products-item__slogan-text">Чего сидишь? Порадуй котэ, </span><a href="#" class="products-item__slogan-link">купи.</a>';
-  var SLOGANS = ['Печень утки разварная с артишоками.', 'Головы щучьи с чесноком да свежайшая сёмгушка.', 'Филе из цыплят с трюфелями в бульоне.'];
 
   var feedCard = document.querySelectorAll('.feed-card');
+  var feedCardLink = document.querySelectorAll('.products-item__slogan-link');
+
+  var addSelectHover = function (e) {
+    var marker = e.target.querySelector('.feed-card__marker');
+
+    e.target.classList.add('feed-card_selected_hover');
+    marker.classList.add('feed-card__marker_selected_hover');
+    marker.innerHTML = QUESTION_MARKER;
+  }
+
+  var removeSelectHover = function (e) {
+    var marker = e.target.querySelector('.feed-card__marker');
+
+    e.target.classList.remove('feed-card_selected_hover');
+    marker.classList.remove('feed-card__marker_selected_hover');
+    marker.innerHTML = MAIN_MARKER;
+  }
   
   function makeElement (tagName, className) {
     var element = document.createElement(tagName);
@@ -16,7 +31,7 @@
   };
 
   function disableCard(element) {
-    var disableBlok = makeElement ('div', 'disable-block');
+    var disableBlok = makeElement('div', 'disable-block');
     var foodTaste = element.querySelector('.feed-card__food-taste');
     var itemSlogan = element.parentNode.querySelector('.products-item__slogan');
 
@@ -25,53 +40,61 @@
     itemSlogan.innerHTML = 'Печалька, ' + foodTaste.textContent + ' закончился.';
   }
 
-  var addSelectHover = function(e) {
-    var marker = e.target.querySelector('.feed-card__marker');
+  function selectFeed(chosenCard) {
+    var cardMarker = chosenCard.parentNode.querySelector('.feed-card__marker');
+    var cardSloganSelected = chosenCard.parentNode.querySelector('.products-item__slogan_selected');
+    var cardSloganUnselected = chosenCard.parentNode.querySelector('.products-item__slogan_unselected');
 
-    e.target.classList.add('feed-card_selected_hover');
-    marker.classList.add('feed-card__marker_selected_hover');
-    marker.innerHTML = QUESTION_MARKER;
+    chosenCard.classList.remove('feed-card_selected');
+    cardSloganSelected.style.display = 'none';
+    cardSloganUnselected.style.display = 'block';
+    cardMarker.innerHTML = MAIN_MARKER;
+    cardMarker.classList.remove('feed-card__marker_selected_hover');
+    chosenCard.removeEventListener('mouseenter', addSelectHover);
+    chosenCard.removeEventListener('mouseleave', removeSelectHover);
   }
 
-  var removeSelectHover = function(e) {
-    var marker = e.target.querySelector('.feed-card__marker');
+  function unselectFeed(chosenCard) {
+    var cardSloganSelected = chosenCard.parentNode.querySelector('.products-item__slogan_selected');
+    var cardSloganUnselected = chosenCard.parentNode.querySelector('.products-item__slogan_unselected');
 
-    e.target.classList.remove('feed-card_selected_hover');
-    marker.classList.remove('feed-card__marker_selected_hover');
-    marker.innerHTML = MAIN_MARKER;
+    chosenCard.classList.add('feed-card_selected');
+    cardSloganSelected.style.display = 'block';
+    cardSloganUnselected.style.display = 'none';
+    chosenCard.addEventListener('mouseenter', addSelectHover);
+    chosenCard.addEventListener('mouseleave', removeSelectHover);
+    chosenCard.classList.remove('feed-card_selected_hover');
   }
 
-  function triggerSelection(card, i) {
-    var cardSlogan = card.parentNode.querySelector('.products-item__slogan');
-    var cardMarker = card.querySelector('.feed-card__marker');
+  function triggerSelection(card) {
 
     if (card.classList.contains('feed-card_selected')) {
-      card.classList.remove('feed-card_selected');
-      cardSlogan.innerHTML = MAIN_SLOGAN;
-      cardMarker.innerHTML = MAIN_MARKER;
-      cardMarker.classList.remove('feed-card__marker_selected_hover');
-      card.removeEventListener('mouseenter', addSelectHover);
-      card.removeEventListener('mouseleave', removeSelectHover);
+      selectFeed(card);
     } else {
-      card.classList.add('feed-card_selected');
-      cardSlogan.innerHTML = SLOGANS[i];
-      card.addEventListener('mouseenter', addSelectHover);
-      card.addEventListener('mouseleave', removeSelectHover);
-      card.classList.remove('feed-card_selected_hover');
+      unselectFeed(card);
     }
   }
 
-  feedCard.forEach(function(item, i) {
+  document.addEventListener("DOMContentLoaded", function () {
+    feedCard.forEach(function (itemCard) {
+      if (itemCard.classList.contains('feed-card_disabled')) {
+        disableCard(itemCard);
+      } else {
+        itemCard.addEventListener('click', function (e) {
+          e.preventDefault();
 
-    if (item.classList.contains('feed-card_disabled')) {
-      disableCard(item);
-    } else {
-      item.addEventListener('click', function (e) {
+          triggerSelection(itemCard); 
+        });
+      }
+    });
+
+    feedCardLink.forEach(function (itemLink) {
+      itemLink.addEventListener('click', function (e) {
+        var itemLinkCard = itemLink.parentNode.parentNode.querySelector('.feed-card');        
         e.preventDefault();
-
-        triggerSelection(item, i); 
+        triggerSelection(itemLinkCard);
       });
-    }
+    });
   });
 
 })();
