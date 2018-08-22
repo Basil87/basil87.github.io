@@ -14,10 +14,13 @@
           box-sizing: border-box;
 }
 
+html {
+  height: 100%;
+}
+
 html, body {
   margin: 0;
   padding: 0;
-  height: 100%;
 }
 
 body {
@@ -64,10 +67,9 @@ body {
 .products-list {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-wrap: wrap;
   width: 100%;
-  padding: 0 80px;
   text-align: left;
 }
 
@@ -258,9 +260,9 @@ body {
           clip-path: polygon(0 42px, 42px 0, 100% 0, 100% 100%, 0% 100%);
 }
 
-@media screen and (max-width: 1280px) {
+@media screen and (min-width: 1280px) {
   .products-list {
-    padding: 0;
-    justify-content: space-around;
+    padding: 0 80px;
+    justify-content: space-between;
   }
 }
