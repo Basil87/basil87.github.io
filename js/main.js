@@ -3,9 +3,9 @@
 (function () {
   var MAIN_MARKER = 'Сказочное заморское яство';
   var QUESTION_MARKER = 'Котэ не одобряет?';
-
-  var feedCard = document.querySelectorAll('.feed-card');
-  var feedCardLink = document.querySelectorAll('.products-item__slogan-link');
+ 
+  var feedCard = [].slice.call(document.querySelectorAll('.feed-card'));
+  var feedCardLink = [].slice.call(document.querySelectorAll('.products-item__slogan-link'));
 
   var addSelectHover = function (e) {
     var marker = e.target.querySelector('.feed-card__marker');
