@@ -39,6 +39,7 @@ body {
   height: 100%;
   text-align: center;
   font-size: 0;
+  background: inherit;
 }
 
 .wrap:before {
@@ -55,6 +56,7 @@ body {
   width: 100%;
   max-width: 1280px;
   vertical-align: middle;
+  background: inherit;
 }
 
 .header__title {
@@ -72,12 +74,27 @@ body {
   flex-wrap: wrap;
   width: 100%;
   text-align: left;
+  background: inherit;
 }
 
 .products-item {
   margin-left: 5px;
   margin-right: 5px;
   margin-bottom: 24px; 
+  background: inherit;
+  position: relative;
+}
+
+.products-item:before {
+  content: '';
+  width: 79px;
+  height: 30px;
+  background: inherit;
+  position: absolute;
+  top: -2px;
+  left: -33px;
+  z-index: 200;
+  transform: rotate(-45deg);
 }
 
 .feed-card {
@@ -105,8 +122,8 @@ body {
   height: 60px;
   background-color: #1698d9;
   position: absolute;
-  top: -10px;
-  left: 14px;
+  top: -12px;
+  left: 16px;
   transform: rotate(45deg);
 }
 
